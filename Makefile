@@ -1,12 +1,13 @@
-CC = gcc
-CFLAGS = -Wall -g
-OBJECT = dnw2.o
+CC=gcc
+CFLAGS=-Wall -g
+OBJS=dnw2.o
 
-dnw2: $(OBJECT)
-	$(CC) $(CFLAGS) -lusb -o dnw2 $(OBJECT)
 
-dnw2.o: dnw2.c
-	$(CC) $(CFLAGS) -c dnw2.c
+dnw2: $(OBJS)
+	$(CC) $(CFLAGS) -lusb -o $@ $+
+
+%o:%c
+	$(CC) -c $(CFLAGS) -o $@
 
 clean:
-	rm -f $(OBJECT) dnw2
+	rm -f $(OBJS) dnw2

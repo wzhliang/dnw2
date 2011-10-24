@@ -33,8 +33,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define	 	QQ2440_SECBULK_IDVENDOR		0x5345
-#define		QQ2440_SECBULK_IDPRODUCT	0x1234
+#define OK6410_SECBULK_IDVENDOR 0x04e8
+#define OK6410_SECBULK_IDPRODUCT 0x1234
 
 
 struct usb_dev_handle *open_port()
@@ -51,8 +51,8 @@ struct usb_dev_handle *open_port()
         struct usb_device *dev;
         for (dev = bus->devices; dev; dev = dev->next)
         {
-            if (QQ2440_SECBULK_IDVENDOR == dev->descriptor.idVendor
-                && QQ2440_SECBULK_IDPRODUCT == dev->descriptor.idProduct)
+            if (OK6410_SECBULK_IDVENDOR == dev->descriptor.idVendor
+                && OK6410_SECBULK_IDPRODUCT == dev->descriptor.idProduct)
             {
                 printf("Target usb device found!\n");
                 struct usb_dev_handle *hdev = usb_open(dev);
